@@ -21,9 +21,5 @@
 
 .header-container span:hover{
     transition: 0.5s;
-    -webkit-transform: scale(1.2);
-        -ms-transform: scale(1.2);
-            transform: scale(1.2);
-    
     opacity:0.5;
 }

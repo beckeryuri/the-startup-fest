@@ -6,8 +6,7 @@ export default (props) =>
     <React.Fragment>
         <div className="card-container">
             <img src={props.image} alt="logo"/>
-            <h1>Nome da Startup</h1>
-            <h3>{props.name}</h3>
+            <h1>{props.name}</h1>
         </div>
         <div>
             <PopUp className={"hidden"} />
