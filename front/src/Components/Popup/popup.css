@@ -9,20 +9,27 @@
 
     position:fixed;
 
-    height: 600px;
+    max-height: 350px;
     width: 400px;
 
     margin: 0;
-    padding-top: 60px;
+    padding-top: 15%;
+    padding-bottom: 30px;
 
     top: calc(50vh - 300px);
     left: calc(50vw - 200px);
+
+    padding-left: 2%;
+    padding-right: 2%;
+
 
     border-radius: 10px;
 
     background-color: #d2d2d2;
 
-    overflow: hidden;
+    overflow: auto;
+
+
 }
 
 .popup-img{
@@ -34,4 +41,16 @@
     margin-top: 10px;
 
     border-radius: 10px;
+}
+
+.popup-container p{
+    
+    font-weight: bold;
+
+}
+
+.popup-container h2{
+    
+    margin: 0;
+    
 }
