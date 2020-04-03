@@ -1,0 +1,17 @@
+.starrating-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.stars{
+    width: 30px;
+    height: 30px;
+    padding-top: 7px;
+    padding-left: 3px;
+    opacity: 0.5;
+  }
+
+.stars:hover{
+    cursor: pointer;
+}
