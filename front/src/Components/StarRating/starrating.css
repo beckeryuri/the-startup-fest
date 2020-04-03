@@ -9,9 +9,10 @@
     height: 30px;
     padding-top: 7px;
     padding-left: 3px;
-    opacity: 0.5;
+    opacity: 0.3;
   }
 
 .stars:hover{
     cursor: pointer;
+    opacity: 1;
 }

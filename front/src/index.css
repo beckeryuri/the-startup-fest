@@ -10,8 +10,9 @@
 body {
   margin: 0;
   
+  background-color: rgba(0,0,0,0.44);
   background: url('https://miro.medium.com/max/10944/1*QyxXPWWmPeXAPIU3VICbWQ.jpeg') no-repeat center center fixed; 
-  
+
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

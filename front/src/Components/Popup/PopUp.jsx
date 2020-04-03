@@ -1,17 +1,19 @@
 import React from 'react'
 import "./popup.css"
 import StarRating from '../StarRating/StarRating'
+import Close from '../../img/close-24px.svg'
 
 export default (props) => 
-    <div className={props.className === "hidden" ? "hidden" : "popup-container"}>
-        <img className="popup-img" src={"https://static.wixstatic.com/media/0adf28_eec83b33056243a9a33440a10b5d7afd.png"} alt="logo"/>
-        <h1>Nome da Startup</h1>
-        <h3>Teste Testando</h3>
-        <p>Plataforma que oferece ao micro e pequeno empreendedor uma inteligência de negócios de forma intuitiva e eficiente através do entendimento e controle dos números da empresa.</p>
+    <div className="popup-container" >
+        <div className="close-container">
+        <img  onClick={props.onClick}className="close" src={Close} alt="close"/>
+        </div>
+        <img className="popup-img" src={props.image} alt="logo"/>
+        <h1>{props.name}</h1>
+        <p>{props.description}</p>
 
         <StarRating name={"Apresentação"}/>
         <StarRating name={"Proposta / Pitch"}/>
         <StarRating name={"Desenvolvimento"}/>
-
 
     </div>
