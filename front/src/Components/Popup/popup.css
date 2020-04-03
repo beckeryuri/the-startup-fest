@@ -1,0 +1,33 @@
+.popup-container{
+
+    display:flex;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+
+    position:fixed;
+
+    height: 600px;
+    width: 400px;
+
+    margin: 0;
+
+    top: calc(50vh - 300px);
+    left: calc(50vw - 200px);
+
+    border-radius: 10px;
+
+    background-color: #d2d2d2;
+}
+
+.popup-container img{
+
+    height: 250px;
+    width: 250px;
+
+    margin-bottom: 30px;
+
+    border-radius: 10px;
+}
