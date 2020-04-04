@@ -16,4 +16,6 @@ export default (props) =>
         <StarRating name={"Proposta / Pitch"}/>
         <StarRating name={"Desenvolvimento"}/>
 
+        <button onClick={props.onClick} >Votar!</button>
+
     </div>
