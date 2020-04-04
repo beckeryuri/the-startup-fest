@@ -1,46 +1,117 @@
 .card-container{
-    display: block;
-
-    margin: 20px 10px;
-
-    height: 300px;
-    width: 300px;
-
-    background-color: #c7c3c3;
-
-    cursor: pointer;
-
-    color: #ff104e;
-
+    display: flex;
+    align-items: center;
 
     text-align: center;
+    
+    height: 40vh;
+    width: 90vh;
+
+    margin: 10px 10px;
+
+    border-radius: 10px;
+
+    background-color: #c7c3c3;
+}
+
+.logo-container{
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 
-    border-radius: 2px;
-}
-
-.card-container:hover{
-    transition: 0.5s;
-    -webkit-transform: scale(1.05);
-        -ms-transform: scale(1.05);
-            transform: scale(1.05);
-}
-
-.card-container img{
-
-    border-radius: 5px;
-
-    height: 200px;
     width: 200px;
-    
-    border: 5px solid white;
-    border-radius: 4px;
-
-    
-    margin-top: 20px;
+    margin: 20px;
 }
 
-.card-container h1{
+.logo-container img{
+    height: 150px;
+    width: 150px;
+}
+
+.logo-container h1{
     margin-top: 10px;
     font-size: 1.5em;
 }
+
+.stars-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    padding-top: 15px;
+}
+.stars-container img{
+    height: 20px;
+    width: 20px;
+}
+
+.stars-container h2{
+    margin: 0;
+    font-size: 1em;
+}
+
+.description-container{
+    max-width: 40%;
+    font-size: 1.1em;
+}
+
+.stars-container button{
+
+    display: inline-block;
+    padding: 15px 45px;
+
+    margin: 20px;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: bold;
+
+    outline: none;
+
+    color: white;
+    background: black;
+
+    cursor: pointer;
+}
+.stars-container button:hover{
+    transition: 0.2s;
+    background-color: white;
+    color: black;
+}
+.popup-button{
+    display:none;
+}
+
+@media screen and (max-width: 769px) {
+    .card-container{
+        flex-direction: column;
+
+        max-width: 250px;
+        max-height: 250px;
+
+        min-width: 250px;
+        min-height: 250px;
+
+        overflow: hidden;
+
+        cursor: pointer;
+    }
+    .popup-button{
+        background-color: none;
+        position: absolute;
+        display: block;
+        max-width: 250px;
+        max-height: 250px;
+
+        min-width: 250px;
+        min-height: 250px;
+        z-index: 2;
+    }
+}
+
+
