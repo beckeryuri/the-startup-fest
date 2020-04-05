@@ -9,9 +9,10 @@
 
     margin: 10px 10px;
 
-    border-radius: 10px;
+    border-radius: 5px;
 
-    background-color: #c7c3c3;
+    background-color: rgb(19, 19, 19, 0.8);
+    color: white;
 }
 
 .logo-container{
@@ -22,11 +23,15 @@
 
     width: 200px;
     margin: 20px;
+
+    height: 100%;
+    color: white;
 }
 
 .logo-container img{
     height: 150px;
     width: 150px;
+    border: 2px solid white;
 }
 
 .logo-container h1{
@@ -55,6 +60,8 @@
 .description-container{
     max-width: 40%;
     font-size: 1.1em;
+    font-weight: bold;
+    text-align: center;
 }
 
 .stars-container button{
@@ -74,7 +81,7 @@
     outline: none;
 
     color: white;
-    background: black;
+    background: #ff104e;
 
     cursor: pointer;
 }

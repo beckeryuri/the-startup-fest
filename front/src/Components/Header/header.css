@@ -23,6 +23,6 @@
 }
 
 .header-container span:hover{
-    transition: 0.5s;
-    opacity:0.5;
+    transition: 0.3s;
+    color: white;
 }
