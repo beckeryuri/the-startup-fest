@@ -1,0 +1,38 @@
+.jumbutron-container{
+    display: flex;
+
+    width: 30vw;
+    height: 20vh;
+
+    margin-top: 30px;
+    margin-left: 20px;
+
+    align-items: center;
+    justify-content: space-evenly;
+
+    border-radius: 5px;
+
+    text-align: center;
+    
+    background-color: rgb(19, 19, 19, 0.8);
+    color: white;
+}
+
+.jumbutron-container h2{
+    margin: 0;
+    font-size: 2em;
+}
+
+
+.jumbutron-container :nth-child(6){
+    height: 10px;
+    width: 10px;
+
+    margin-top: 0;
+}
+.jumbutron-logo{
+    height: 80px;
+    width: 80px;
+    
+    border: 5px solid white;
+}

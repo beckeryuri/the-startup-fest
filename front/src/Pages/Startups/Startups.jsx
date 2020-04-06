@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Api from '../Api/Api'
-import Card from '../Components/Card/Card'
-import Header from '../Components/Header/Header'
+import Api from '../../Api/Api'
+import Card from '../../Components/Card/Card'
+import Header from '../../Components/Header/Header'
 import './startups.css'
 
 export default class Startups extends Component{

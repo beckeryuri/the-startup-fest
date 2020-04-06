@@ -20,9 +20,6 @@ export default class Card extends Component {
 
     closePopUp() {
         this.setState({ hidden: false })
-        console.log("Foi FOOOOOOOI")
-
-        console.log(this.state.hidden)
     }
 
     showPopUp() {

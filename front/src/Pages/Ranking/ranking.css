@@ -1,0 +1,10 @@
+.ranking-container{
+    display: flex;
+    justify-content: center;
+
+}
+
+.ranking-container h1{
+   padding-left: 20px;
+
+}
