@@ -51,7 +51,6 @@ export default class Startups extends Component{
    
     return(
       <div>
-          <Header />
           <div className="ranking-container">
           <div className="column-container">
             <h1>Proposta</h1>

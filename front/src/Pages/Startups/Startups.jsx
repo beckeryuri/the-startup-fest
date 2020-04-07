@@ -25,7 +25,6 @@ export default class Startups extends Component{
     return(
       <div>
         <div className="container-startups">
-        <Header />
         {startups.map(i => <Card key={i.segment_id} name={i.name} 
         image={i.imageUrl !== "https://thumb.lovemondays.com.br/image/40fa4baba2854c2fa7399bbb90debcc1/logos/4a835e/techfit.png" 
         || i.imageUrl === null ? i.imageUrl : "https://www.ferramentastenace.com.br/wp-content/uploads/2017/11/sem-foto.jpg"}

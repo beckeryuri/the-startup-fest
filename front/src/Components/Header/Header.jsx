@@ -1,8 +1,8 @@
 import React from 'react'
 import "./header.css"
 
-export default () => 
+export default (props) => 
     <div className="header-container">
-        <span>Startups</span>
-        <span>Rankings</span>
+        <span onClick={props.startups}>Startups</span>
+        <span onClick={props.rankings}>Rankings</span>
     </div>
