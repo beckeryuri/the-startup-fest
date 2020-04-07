@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Header from '../../Components/Header/Header'
 import './ranking.css'
 import Jumbutron from '../../Components/Jumbotron/Jumbutron';
 import firebase from '../../Api/firebase'
