@@ -3,6 +3,8 @@ import "./card.css"
 import PopUp from '../Popup/PopUp'
 import StarRating from '../StarRating/StarRating'
 import firebase from '../../Api/firebase'
+import Swal from 'sweetalert2';
+
 
 export default class Card extends Component {
     constructor(props) {
@@ -146,27 +148,29 @@ export default class Card extends Component {
             votes: incrementVote
         })
 
+        Swal.fire({
+            title: 'Obrigado!',
+            text: 'Voto registrado com sucesso!',
+            icon: 'error',
+            confirmButtonText: 'Ok!'
+          })
+
         this.setState({
             Pitch:0,
             Proposal: 0,
             Progress: 0
         })
 
-        console.log("foi")
     }
-
-
 
     render() {
         const { image, name, description } = this.props
         return (
-            <React.Fragment>
-                {this.showPopUp()}
                 <div className="card-container">
                     <div className="logo-container">
                         <img src={image} alt="logo" />
                         <h1>{name}</h1>
-                        <div onClick={this.openPopUp.bind(this)}className="popup-button"></div>
+                        <div onClick={this.openPopUp.bind(this)} className="popup-button"></div>
                     </div>
                     <div className="description-container">
                         <p>{description}</p>
@@ -199,8 +203,6 @@ export default class Card extends Component {
                             <button onClick={this.setVote.bind(this)}>Votar!</button>
                         </div>
                 </div>
-
-            </React.Fragment>
         )
     }
 }
