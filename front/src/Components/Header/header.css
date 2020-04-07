@@ -12,8 +12,9 @@
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
 }
 
-.header-container span{
+.link{
 
+    text-decoration: none;
     color: #ff104e;
 
     font-weight: bold;
@@ -22,7 +23,7 @@
     cursor: pointer;
 }
 
-.header-container span:hover{
+.link:hover{
     transition: 0.3s;
     color: white;
 }

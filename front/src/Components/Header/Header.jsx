@@ -1,8 +1,10 @@
 import React from 'react'
 import "./header.css"
+import { Link } from 'react-router-dom'
 
 export default (props) => 
     <div className="header-container">
-        <span onClick={props.startups}>Startups</span>
-        <span onClick={props.rankings}>Rankings</span>
+        <Link className="link" to='/'>Startups</Link>
+        <Link className="link" to='/ranking'>Ranking</Link>
+        
     </div>
