@@ -25,6 +25,11 @@
     font-size: 1.5em;
 }
 
+.jumbutron-container h2{
+    max-width: 100px;
+}
+
+
 
 .jumbutron-container :nth-child(6){
     height: 10px;

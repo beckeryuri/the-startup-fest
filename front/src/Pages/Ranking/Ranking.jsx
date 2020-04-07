@@ -9,24 +9,45 @@ export default class Startups extends Component{
     super(props);
 
     this.state = {
-      startups:null,
-      setStartups:null
+      pitch: [],
+      progress: [],
+      proposal: []
     }
   }
   
-  fetchData = async () =>{
+  setPitch = async () =>{
     firebase.firestore().collection('Startups')
     .orderBy("pitch_rating", "desc")
     .limit(3)
     .get()
-    .then((snapshot) => snapshot.docs.forEach(doc => console.log(doc.data())))
-
+    .then((snapshot) => this.setState({pitch: snapshot.docs.map(i => i.data())}))
   }
 
-  componentDidMount(){
-    this.fetchData()
+  setProgress = async () =>{
+    firebase.firestore().collection('Startups')
+    .orderBy("progress_rating", "desc")
+    .limit(3)
+    .get()
+    .then((snapshot) => this.setState({progress: snapshot.docs.map(i => i.data())}))
+  }
+
+  setProposal = async () =>{
+    firebase.firestore().collection('Startups')
+    .orderBy("proposal_rating", "desc")
+    .limit(3)
+    .get()
+    .then((snapshot) => this.setState({proposal: snapshot.docs.map(i => i.data())}))
+  }
+
+  async componentDidMount(){
+    await this.setPitch()
+    await this.setProgress()
+    await this.setProposal()
+    console.log(this.state.pitch)
   }
   render (){
+
+    const { pitch, proposal, progress } = this.state
    
     return(
       <div>
@@ -34,21 +55,33 @@ export default class Startups extends Component{
           <div className="ranking-container">
           <div className="column-container">
             <h1>Proposta</h1>
-            <Jumbutron ranking={"1º"} nota={2.5} name={"Hellfire Games"}/>
-            <Jumbutron ranking={"2º"} />
-            <Jumbutron ranking={"3º"} />
+            {proposal.map(i => 
+            <Jumbutron 
+            ranking={"1º"}
+            key={i.id}
+            name={i.name}
+            image={i.imageUrl !== "https://thumb.lovemondays.com.br/image/40fa4baba2854c2fa7399bbb90debcc1/logos/4a835e/techfit.png" 
+           || i.imageUrl === null ? i.imageUrl : "https://www.ferramentastenace.com.br/wp-content/uploads/2017/11/sem-foto.jpg"}
+            nota={i.proposal_rating / i.votes} />)}
           </div>
           <div className="column-container">
             <h1>Apresentação</h1>
-            <Jumbutron ranking={"1º"} nota={2.5} name={"Testando"}/>
-            <Jumbutron ranking={"2º"} />
-            <Jumbutron ranking={"3º"} />
+            {pitch.map(i => 
+            <Jumbutron ranking={"1º"}
+            key={i.id} 
+            name={i.name}
+            image={i.imageUrl !== "https://thumb.lovemondays.com.br/image/40fa4baba2854c2fa7399bbb90debcc1/logos/4a835e/techfit.png" 
+            || i.imageUrl === null ? i.imageUrl : "https://www.ferramentastenace.com.br/wp-content/uploads/2017/11/sem-foto.jpg"}
+            nota={i.pitch_rating / i.votes} />)}
           </div>
           <div className="column-container">
             <h1>Desenvolvimento</h1>
-            <Jumbutron ranking={"1º"} nota={2.5}/>
-            <Jumbutron ranking={"2º"} />
-            <Jumbutron ranking={"3º"} />
+            {progress.map(i => 
+            <Jumbutron ranking={"1º"}
+            key={i.id} name={i.name}
+            image={i.imageUrl !== "https://thumb.lovemondays.com.br/image/40fa4baba2854c2fa7399bbb90debcc1/logos/4a835e/techfit.png" 
+            || i.imageUrl === null ? i.imageUrl : "https://www.ferramentastenace.com.br/wp-content/uploads/2017/11/sem-foto.jpg"}
+            nota={i.progress_rating / i.votes} />)}
           </div>
         </div>
       </div>
