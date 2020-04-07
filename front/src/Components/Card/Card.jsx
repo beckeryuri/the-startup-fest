@@ -2,15 +2,16 @@ import React, { Component } from 'react'
 import "./card.css"
 import PopUp from '../Popup/PopUp'
 import StarRating from '../StarRating/StarRating'
+import firebase from '../../Api/firebase'
 
 export default class Card extends Component {
     constructor(props) {
         super(props)
         this.state = { 
             hidden: false,
-            apresentacao:0,
-            proposta: 0,
-            desenvolvimento: 0
+            pitch:0,
+            proposal: 0,
+            progress: 0
          }
     }
 
@@ -38,102 +39,120 @@ export default class Card extends Component {
         )
     }
 
-    setOneStarApresentacao(){
+    setOneStarPitch(){
         this.setState({
-            apresentacao:1
+            pitch: 1
         })
     }
 
-    setTwoStarsApresentacao(){
+    setTwoStarsPitch(){
         this.setState({
-            apresentacao:2
+            pitch: 2
         })
     }
 
-    setThreeStarsApresentacao(){
+    setThreeStarsPitch(){
         this.setState({
-            apresentacao:3
+            pitch: 3
         })
     }
 
-    setFourStarsApresentacao(){
+    setFourStarsPitch(){
         this.setState({
-            apresentacao:4
+            pitch: 4
         })
     }
 
-    setFiveStarsApresentacao(){
+    setFiveStarsPitch(){
         this.setState({
-            apresentacao:5
+            pitch: 5
         })
     }
 
-    setOneStarProposta(){
+    setOneStarProposal(){
         this.setState({
-            proposta:1
+            proposal: 1
         })
     }
 
-    setTwoStarsProposta(){
+    setTwoStarsProposal(){
         this.setState({
-            proposta:2
+            proposal: 2
         })
     }
 
-    setThreeStarsProposta(){
+    setThreeStarsProposal(){
         this.setState({
-            proposta:3
+            proposal: 3
         })
     }
 
-    setFourStarsProposta(){
+    setFourStarsProposal(){
         this.setState({
-            proposta:4
+            proposal: 4
         })
     }
 
-    setFiveStarsProposta(){
+    setFiveStarsProposal(){
         this.setState({
-            proposta:5
+            proposal: 5
         })
     }
 
-    setOneStarDesenvolvimento(){
+    setOneStarProgress(){
         this.setState({
-            desenvolvimento:1
+            progress: 1
         })
     }
 
-    setTwoStarsDesenvolvimento(){
+    setTwoStarsProgress(){
         this.setState({
-            desenvolvimento:2
+            progress: 2
         })
     }
 
-    setThreeStarsDesenvolvimento(){
+    setThreeStarsProgress(){
         this.setState({
-            desenvolvimento:3
+            progress: 3
         })
     }
 
-    setFourStarsDesenvolvimento(){
+    setFourStarsProgress(){
         this.setState({
-            desenvolvimento:4
+            progress: 4
         })
     }
 
-    setFiveStarsDesenvolvimento(){
+    setFiveStarsProgress(){
         this.setState({
-            desenvolvimento:5
+            progress: 5
         })
     }
 
     setVote(){
-        this.setState({
-            apresentacao:0,
-            proposta: 0,
-            desenvolvimento: 0
+        const { pitch, proposal, progress } = this.state
+        const { name } = this.props
+
+        const incrementPitch = firebase.firestore.FieldValue.increment(pitch)
+        const incrementProposal = firebase.firestore.FieldValue.increment(proposal)
+        const incrementProgress = firebase.firestore.FieldValue.increment(progress)
+        const incrementVote = firebase.firestore.FieldValue.increment(1)
+        const voteRef = firebase.firestore().collection('Startups').doc(name)
+
+        voteRef.update({
+            progress_rating: incrementProgress,
+            proposal_rating: incrementProposal,
+            pitch_rating: incrementPitch,
+            votes: incrementVote
         })
+
+        this.setState({
+            Pitch:0,
+            Proposal: 0,
+            Progress: 0
+        })
+
+        console.log("foi")
     }
 
 
@@ -153,29 +172,29 @@ export default class Card extends Component {
                         <p>{description}</p>
                     </div>
                         <div className="stars-container">
-                            <StarRating name={"Apresentação"} 
-                            clickOne={this.setOneStarApresentacao.bind(this)}
-                            clickTwo={this.setTwoStarsApresentacao.bind(this)}
-                            clickThree={this.setThreeStarsApresentacao.bind(this)}
-                            clickFour={this.setFourStarsApresentacao.bind(this)}
-                            clickFive={this.setFiveStarsApresentacao.bind(this)}
-                            nota={this.state.apresentacao}
+                            <StarRating name={"Apresentação / Pitch"} 
+                            clickOne={this.setOneStarPitch.bind(this)}
+                            clickTwo={this.setTwoStarsPitch.bind(this)}
+                            clickThree={this.setThreeStarsPitch.bind(this)}
+                            clickFour={this.setFourStarsPitch.bind(this)}
+                            clickFive={this.setFiveStarsPitch.bind(this)}
+                            nota={this.state.pitch}
                             />
-                            <StarRating name={"Proposta / Pitch"} 
-                            clickOne={this.setOneStarProposta.bind(this)}
-                            clickTwo={this.setTwoStarsProposta.bind(this)}
-                            clickThree={this.setThreeStarsProposta.bind(this)}
-                            clickFour={this.setFourStarsProposta.bind(this)}
-                            clickFive={this.setFiveStarsProposta.bind(this)}
-                            nota={this.state.proposta}
+                            <StarRating name={"Proposta"} 
+                            clickOne={this.setOneStarProposal.bind(this)}
+                            clickTwo={this.setTwoStarsProposal.bind(this)}
+                            clickThree={this.setThreeStarsProposal.bind(this)}
+                            clickFour={this.setFourStarsProposal.bind(this)}
+                            clickFive={this.setFiveStarsProposal.bind(this)}
+                            nota={this.state.proposal}
                             />
                             <StarRating name={"Desenvolvimento"} 
-                            clickOne={this.setOneStarDesenvolvimento.bind(this)}
-                            clickTwo={this.setTwoStarsDesenvolvimento.bind(this)}
-                            clickThree={this.setThreeStarsDesenvolvimento.bind(this)}
-                            clickFour={this.setFourStarsDesenvolvimento.bind(this)}
-                            clickFive={this.setFiveStarsDesenvolvimento.bind(this)}
-                            nota={this.state.desenvolvimento}
+                            clickOne={this.setOneStarProgress.bind(this)}
+                            clickTwo={this.setTwoStarsProgress.bind(this)}
+                            clickThree={this.setThreeStarsProgress.bind(this)}
+                            clickFour={this.setFourStarsProgress.bind(this)}
+                            clickFive={this.setFiveStarsProgress.bind(this)}
+                            nota={this.state.progress}
                             />
                             <button onClick={this.setVote.bind(this)}>Votar!</button>
                         </div>

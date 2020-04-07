@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Ranking from './Pages/Ranking/Ranking'
+import Startups from './Pages/Ranking/Ranking';
 
-ReactDOM.render(<Ranking />, document.getElementById('root'));
+ReactDOM.render(<Startups />, document.getElementById('root'));
