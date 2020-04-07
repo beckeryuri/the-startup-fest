@@ -2,10 +2,29 @@ import React, {Component} from 'react';
 import Header from '../../Components/Header/Header'
 import './ranking.css'
 import Jumbutron from '../../Components/Jumbotron/Jumbutron';
+import firebase from '../../Api/firebase'
 
 export default class Startups extends Component{
   constructor(props){
-    super(props)
+    super(props);
+
+    this.state = {
+      startups:null,
+      setStartups:null
+    }
+  }
+  
+  fetchData = async () =>{
+    firebase.firestore().collection('Startups')
+    .orderBy("pitch_rating", "desc")
+    .limit(3)
+    .get()
+    .then((snapshot) => snapshot.docs.forEach(doc => console.log(doc.data())))
+
+  }
+
+  componentDidMount(){
+    this.fetchData()
   }
   render (){
    
