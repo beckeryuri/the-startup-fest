@@ -48,6 +48,9 @@ export default class Startups extends Component {
   render() {
 
     const { pitch, proposal, progress } = this.state
+    let rankingProp = 0
+    let rankingPitch = 0
+    let rankingProg = 0
 
     return (
       <div>
@@ -55,33 +58,41 @@ export default class Startups extends Component {
         <div className="ranking-container">
           <div className="column-container">
             <h1>Proposta</h1>
-            {proposal.map(i =>
-              <Jumbutron
-                ranking={"1º"}
+            {proposal.map(i => {
+              rankingProp++
+              return <Jumbutron
+                ranking={rankingProp + "º"}
                 key={i.id}
                 name={i.name}
                 image={i.imageUrl !== "https://thumb.lovemondays.com.br/image/40fa4baba2854c2fa7399bbb90debcc1/logos/4a835e/techfit.png"
                   || i.imageUrl === null ? i.imageUrl : "https://www.ferramentastenace.com.br/wp-content/uploads/2017/11/sem-foto.jpg"}
-                nota={Math.round(i.proposal_rating / i.votes)} />)}
+                nota={Math.round(i.proposal_rating / i.votes)} />
+            })}
           </div>
           <div className="column-container">
             <h1>Apresentação</h1>
-            {pitch.map(i =>
-              <Jumbutron ranking={"1º"}
+            {pitch.map(i => {
+              rankingPitch++
+              return <Jumbutron
+                ranking={rankingPitch + "º"}
                 key={i.id}
                 name={i.name}
                 image={i.imageUrl !== "https://thumb.lovemondays.com.br/image/40fa4baba2854c2fa7399bbb90debcc1/logos/4a835e/techfit.png"
                   || i.imageUrl === null ? i.imageUrl : "https://www.ferramentastenace.com.br/wp-content/uploads/2017/11/sem-foto.jpg"}
-                nota={Math.round(i.pitch_rating / i.votes)} />)}
+                nota={Math.round(i.pitch_rating / i.votes)} />
+            })}
           </div>
           <div className="column-container">
             <h1>Desenvolvimento</h1>
-            {progress.map(i =>
-              <Jumbutron ranking={"1º"}
+            {progress.map(i => {
+              rankingProg++
+              return <Jumbutron
+                ranking={rankingProg + "º"}
                 key={i.id} name={i.name}
                 image={i.imageUrl !== "https://thumb.lovemondays.com.br/image/40fa4baba2854c2fa7399bbb90debcc1/logos/4a835e/techfit.png"
                   || i.imageUrl === null ? i.imageUrl : "https://www.ferramentastenace.com.br/wp-content/uploads/2017/11/sem-foto.jpg"}
-                nota={Math.round(i.progress_rating / i.votes)} />)}
+                nota={Math.round(i.progress_rating / i.votes)} />
+            })}
           </div>
         </div>
       </div>

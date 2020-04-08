@@ -3,7 +3,6 @@ import "./starrating.css"
 import Star from '../../img/darkStar.svg'
 
 export default (props) => {
-
         return(
             <div className="starrating-container">
                     <h2>{props.name}</h2>

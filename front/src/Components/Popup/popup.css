@@ -52,7 +52,6 @@
 }
 
 .popup-container button{
-
     display: inline-block;
     padding: 15px 45px;
 
@@ -74,16 +73,13 @@
 }
 
 .close{
-
     height: 50px;
     width: 50px;
     cursor: pointer;
-    
 }
 
 @media screen and (max-width: 534px) {
     .popup-img{
-
         height: 100px;
         width: 100px;
     
