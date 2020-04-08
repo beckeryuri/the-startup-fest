@@ -3,6 +3,7 @@ import "./card.css"
 import PopUp from '../Popup/PopUp'
 import StarRating from '../StarRating/StarRating'
 import firebase from '../../Api/firebase'
+import Swal from 'sweetalert2'
 
 export default class Card extends Component {
     constructor(props) {
@@ -32,7 +33,36 @@ export default class Card extends Component {
 
                 {hidden && (
 
-                    <PopUp onClick={this.closePopUp.bind(this)} name={name} image={image} description={description} />
+                    <PopUp
+                    close={this.closePopUp.bind(this)}
+                    vote={this.setVote.bind(this)}
+                    name={name}
+                    image={image}
+                    description={description}
+
+                    clickOnePitch={this.setOneStarPitch.bind(this)}
+                    clickTwoPitch={this.setTwoStarsPitch.bind(this)}
+                    clickThreePitch={this.setThreeStarsPitch.bind(this)}
+                    clickFourPitch={this.setFourStarsPitch.bind(this)}
+                    clickFivePitch={this.setFiveStarsPitch.bind(this)}
+                    notaPitch={this.state.pitch}
+
+                    clickOneProposal={this.setOneStarProposal.bind(this)}
+                    clickTwoProposal={this.setTwoStarsProposal.bind(this)}
+                    clickThreeProposal={this.setThreeStarsProposal.bind(this)}
+                    clickFourProposal={this.setFourStarsProposal.bind(this)}
+                    clickFiveProposal={this.setFiveStarsProposal.bind(this)}
+                    notaProposal={this.state.proposal}
+
+                    clickOneProgress={this.setOneStarProgress.bind(this)}
+                    clickTwoProgress={this.setTwoStarsProgress.bind(this)}
+                    clickThreeProgress={this.setThreeStarsProgress.bind(this)}
+                    clickFourProgress={this.setFourStarsProgress.bind(this)}
+                    clickFiveProgress={this.setFiveStarsProgress.bind(this)}
+                    notaProgress={this.state.progress}
+
+                     
+                     />
                 )
                 }
             </React.Fragment>
@@ -129,6 +159,7 @@ export default class Card extends Component {
         })
     }
 
+
     setVote(){
         const { pitch, proposal, progress } = this.state
         const { name } = this.props
@@ -144,13 +175,20 @@ export default class Card extends Component {
             proposal_rating: incrementProposal,
             pitch_rating: incrementPitch,
             votes: incrementVote
+        }).then(res => console.log(res))
+            
+        this.setState({
+            pitch:0,
+            proposal: 0,
+            progress: 0
         })
 
-        this.setState({
-            Pitch:0,
-            Proposal: 0,
-            Progress: 0
-        })
+        Swal.fire({
+            icon: 'success',
+            title: 'Obrigado!',
+            text: 'Voto registado com sucesso!'
+          })
+
 
         console.log("foi")
     }
